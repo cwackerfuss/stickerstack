@@ -1,0 +1,26 @@
+.hex {
+  cursor: pointer;
+  stroke-width: 4;
+  fill: white;
+}
+
+.hive-item {
+  cursor: pointer;
+}
+.hive-item:hover .hex {
+  fill-opacity: 1;
+  stroke: $color-alpha;
+}
+
+.hex {
+  transition: all 0.3s ease-in-out;
+}
+.hex-selected {
+  fill: url(#alphaGradient);
+}
+.alphaGradient-1 {
+  stop-color: #4144b8;
+}
+.alphaGradient-2 {
+  stop-color: #9f76dd;
+}

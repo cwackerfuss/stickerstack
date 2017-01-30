@@ -1,0 +1,38 @@
+$color-alpha: #4144B8;
+$color-beta: #f700ff;
+$color-bg-light: #FAF9FD;
+$color-bg-dark: $color-alpha;
+
+$base-padding: 20px;
+
+$breakpoint-sm: 768px;
+$breakpoint-md: 900px;
+$breakpoint-lg: 1100px;
+
+$font-family-base: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+
+$container-width: 1300px;
+$container-padding: 20px;
+
+$zindex-nav: 990;
+$zindex-aside: 989;
+$zindex-modal: 991;
+$zindex-stickyfooter: 987;
+
+
+
+@mixin gradient-alpha() {
+  background: #4144b8;
+  background: -moz-linear-gradient(left,  #4144b8 0%, #9f76dd 100%);
+  background: -webkit-linear-gradient(left,  #4144b8 0%,#9f76dd 100%);
+  background: linear-gradient(to right,  #4144b8 0%,#9f76dd 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4144b8', endColorstr='#9f76dd',GradientType=1 );
+}
+
+@mixin gradient-beta() {
+  background: #f700ff;
+  background: -moz-linear-gradient(left,  #f700ff 0%, #ffe000 100%);
+  background: -webkit-linear-gradient(left,  #f700ff 0%,#ffe000 100%);
+  background: linear-gradient(to right,  #f700ff 0%,#ffe000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f700ff', endColorstr='#ffe000',GradientType=1 );
+}

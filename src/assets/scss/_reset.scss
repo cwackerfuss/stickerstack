@@ -1,0 +1,11 @@
+html, body {
+  font-family: $font-family-base;
+  background-color: $color-bg-light;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}

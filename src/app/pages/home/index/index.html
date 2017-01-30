@@ -1,0 +1,35 @@
+<v-layout>
+  <div class="shop">
+    <div class="shop-main">
+      <div class="shop-items-container">
+        <div class="section-header section-header--label">
+          <p class="section-header__label">Shop</p>
+          <h1 class="section-header__title">Our Stickers</h1>
+        </div>
+        <HiveGrid :items="items" :config="shopGridConfig">
+          <template scope="props">
+            <ShopItem
+              :item="props.item"
+              :toggleInCart="() => toggleItemInCart(props.index)"
+            />
+          </template>
+        </HiveGrid>
+      </div>
+    </div>
+    <div class="shop-aside">
+      <div class="section-header">
+        <h1 class="section-header__title section-header__title--light">Your Stickers</h1>
+      </div>
+      <div class="cart-items">
+        <CartItem
+          v-for="(item, index) of cartItems"
+          :item="item"
+          :remove="() => clearCartItem(index)"
+        />
+      </div>
+    </div>
+    <div class="shop-footer">
+      <p>Only $2 each when you buy 6 or more.</p>
+    </div>
+  </div>
+</v-layout>

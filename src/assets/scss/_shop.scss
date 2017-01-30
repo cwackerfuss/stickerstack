@@ -1,0 +1,134 @@
+.shop {
+  position: relative;
+  margin-bottom: 60px;
+}
+.shop-main {
+  width: 100%;
+  display: block;
+  padding: $base-padding 40% 300px $base-padding;
+
+  @media (min-width: $breakpoint-lg) {
+    padding-right: 30%;
+  }
+}
+.shop-aside {
+  @include gradient-alpha;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: calc(100% + 60px);
+  width: 40%;
+  padding: $base-padding;
+  z-index: $zindex-aside;
+  box-sizing: border-box;
+
+  @media (min-width: $breakpoint-lg) {
+    width: 30%;
+  }
+}
+.shop-items-container {
+  display: block;
+}
+
+.shop-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: $base-padding 30% $base-padding $base-padding;
+  background-color: white;
+  text-align: center;
+  p {
+    margin: 0 0;
+    color: $color-beta;
+  }
+}
+.hive-grid {
+  padding: 0 12px;
+  text-align: center;
+  margin: 0 auto;
+
+  .hive-item {
+    display: inline-block;
+    position: relative;
+    width: 150px;
+    height: 130px;
+    margin: 0 -18px;
+    svg {
+      width: 150px;
+      height: 130px;
+    }
+    &--empty {
+      visibility: hidden;
+    }
+  }
+
+  &.column-5 {
+    max-width: 650px;
+    .hive-item {
+      &:nth-child(5n + 1),
+      &:nth-child(5n + 3),
+      &:nth-child(5n + 5) {
+        transform: translateY(50%);
+      }
+    }
+  }
+
+  &.column-4 {
+    max-width: 550px;
+    .hive-item {
+      &:nth-child(4n + 1),
+      &:nth-child(4n + 3) {
+        transform: translateY(50%);
+      }
+    }
+  }
+
+  &.column-3 {
+    max-width: 440px;
+    .hive-item {
+      &:nth-child(3n + 1),
+      &:nth-child(3n + 3) {
+        transform: translateY(50%);
+      }
+    }
+  }
+
+  &.column-2 {
+    max-width: 330px;
+    .hive-item {
+      &:nth-child(even) {
+        transform: translateY(50%);
+      }
+    }
+  }
+
+}
+
+.cart-items {
+  max-width: 250px;
+  margin: 0 auto;
+  display: blocks;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  &__thumb {
+    width: 70px;
+    margin: 0 10px;
+  }
+  &__delete {
+    cursor: pointer;
+    i {
+      color: #9f76dd;
+      font-size: 1.25rem;
+    }
+    &:hover {
+      i {
+        color: $color-bg-light;
+      }
+    }
+  }
+}

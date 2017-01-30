@@ -1,0 +1,44 @@
+<div>
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-header">
+        <router-link
+          class="nav-brand"
+          :to="{ name: 'home.index' }"
+        >
+          Stickerstack
+        </router-link>
+
+        <div class="nav-items">
+          <ul>
+            <router-link
+              :to="{ name: 'home.index' }"
+              active-class="active"
+              class="nav-item"
+              tag="li"
+            >
+              <a>
+                About
+              </a>
+            </router-link>
+            <router-link
+              :to="{ name: 'home.index' }"
+              active-class="active"
+              class="nav-item"
+              tag="li"
+            >
+              <a>
+                Support
+              </a>
+            </router-link>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="app-main">
+    <slot></slot>
+  </div>
+
+</div>

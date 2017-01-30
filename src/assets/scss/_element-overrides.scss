@@ -1,0 +1,10 @@
+.el-input-number {
+  width: 120px;
+}
+
+.el-input-number__decrease, .el-input-number__increase {
+  color: #4546b9;
+  &:hover {
+    color: $color-beta;
+  }
+}
