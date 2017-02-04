@@ -2,34 +2,34 @@
 
 ## Project setup
 
-- Install [pyenv](https://github.com/yyuu/pyenv)
-    - `brew update`
-    - `brew install pyenv`
+**Install [pyenv](https://github.com/yyuu/pyenv)**
+- `brew update`
+- `brew install pyenv`
 
-- Install [virtualenv](https://github.com/yyuu/pyenv-virtualenv)
-    - `brew install pyenv-virtualenv`
+**Install [virtualenv](https://github.com/yyuu/pyenv-virtualenv)**
+- `brew install pyenv-virtualenv`
 
-- Add commands to bash
-    - `vim ~/.bash_profile`
-    - Add these to end of file and save
-        - `eval "$(pyenv init -)"`
-        - `eval "$(pyenv virtualenv-init -)"`
-    - Reset bash: `source ~/.bash_profile`
+**Add commands to bash**
+- `vim ~/.bash_profile`
+- Add these lines to the end of file and save:
+    - `eval "$(pyenv init -)"`
+    - `eval "$(pyenv virtualenv-init -)"`
+- Reset bash: `source ~/.bash_profile`
 
-- Install python
-    - `pyenv install 3.5.0`
-    - Go to project root
-    - `pyenv virtualenv 3.5.0 stickerstack`
-    - "pyenv-virtualenv: activate stickerstack" should print if successful
+**Install python**
+- `pyenv install 3.5.0`
+- Go to project root
+- `pyenv virtualenv 3.5.0 stickerstack`
+- "`pyenv-virtualenv: activate stickerstack`" should print if successful
 
-- Install requirements
-    - `pip install -r requirements.txt`
+**Install requirements**
+- `pip install -r requirements.txt`
 
-- Start Flask
-    - In `/client` run `npm run build`
-    - In project root, run `export FLASK_APP=runserver.py`
-    - Start sever with `flask run`
-    - Check http://127.0.0.1:5000/
+**Start Flask**
+- In `/client` run `npm run build`
+- In project root, run `export FLASK_APP=runserver.py`
+- Start sever with `flask run`
+- Check http://127.0.0.1:5000/
 
 
 
