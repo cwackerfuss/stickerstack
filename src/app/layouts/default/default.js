@@ -11,6 +11,10 @@
 import authService from './../../services/auth';
 
 export default {
+  data: () => ({
+    faqDialogVisible: false,
+    supportDialogVisible: false
+  }),
   methods: {
     logout() {
       authService.logout();

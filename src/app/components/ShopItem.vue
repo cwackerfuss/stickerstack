@@ -1,5 +1,5 @@
 <template>
-  <div class="hive-item" @click="handleItemClick()">
+  <div class="hive-item" @click="handleClick">
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 308 268" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
         <linearGradient id="alphaGradient">
@@ -13,13 +13,7 @@
         :stroke="item.border ? item.border : '#4144B8'">
       </polygon>
       <polygon
-        v-if="isSelected"
-        points="304,134 229,264 79,264 4,134 79,4 229,4"
-        class="hex-selected"
-        fill-opacity="0.3">
-      </polygon>
-      <polygon
-        v-if="isSelected"
+        v-if="item.inCart"
         points="183,31.8 198,57.8 228,57.8 243,31.8 228,5.8 198,5.8"
         class="hex-selected">
       </polygon>
@@ -30,17 +24,9 @@
 
 <script>
   export default {
-    data: () => ({
-      isSelected: false
-    }),
     props: [
-      'item', 'toggleInCart'
-    ],
-    methods: {
-      handleItemClick() {
-        this.isSelected = !this.isSelected;
-        this.toggleInCart();
-      }
-    }
+      'item',
+      'handleClick'
+    ]
   };
 </script>

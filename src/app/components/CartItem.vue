@@ -1,8 +1,6 @@
 <template>
   <div class="cart-item">
-    <div class="cart-item__delete" @click="remove">
-      <i class="el-icon-circle-close"></i>
-    </div>
+
     <svg class="cart-item__thumb" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 308 268" xmlns:xlink="http://www.w3.org/1999/xlink">
       <polygon
         class="hex"
@@ -11,24 +9,20 @@
       </polygon>
     </svg>
     <div class="cart-item__count">
-      <el-input-number v-model="count" @change="handleItemCount" :min="1" :max="10"></el-input-number>
+      <el-input-number v-model="item.quantity" @change="handleItemQuantity" :min="1" :max="10" />
+    </div>
+    <div class="cart-item__delete" @click="handleRemove">
+      <i class="el-icon-circle-close"></i>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    data: () => ({
-        count: 1
-    }),
     props: [
       'item',
-      'remove'
-    ],
-    methods: {
-      handleItemCount(value) {
-        console.log(value)
-      }
-    }
+      'handleRemove',
+      'handleItemQuantity'
+    ]
   };
 </script>

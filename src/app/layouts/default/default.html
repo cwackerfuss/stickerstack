@@ -11,26 +11,16 @@
 
         <div class="nav-items">
           <ul>
-            <router-link
-              :to="{ name: 'home.index' }"
-              active-class="active"
-              class="nav-item"
-              tag="li"
-            >
-              <a>
+            <li class="nav-item">
+              <a @click="faqDialogVisible = true">
                 About
               </a>
-            </router-link>
-            <router-link
-              :to="{ name: 'home.index' }"
-              active-class="active"
-              class="nav-item"
-              tag="li"
-            >
-              <a>
+            </li>
+            <li class="nav-item">
+              <a @click="supportDialogVisible = true">
                 Support
               </a>
-            </router-link>
+            </li>
           </ul>
         </div>
       </div>
@@ -40,5 +30,19 @@
   <div class="app-main">
     <slot></slot>
   </div>
+
+  <el-dialog title="Support" v-model="supportDialogVisible" size="tiny">
+    <span>This is a message</span>
+    <span slot="footer" class="dialog-footer">
+      <el-button @click="supportDialogVisible = false">Cancel</el-button>
+    </span>
+  </el-dialog>
+
+  <el-dialog title="FAQs" v-model="faqDialogVisible" size="tiny">
+    <span>This is a message</span>
+    <span slot="footer" class="dialog-footer">
+      <el-button @click="faqDialogVisible = false">Cancel</el-button>
+    </span>
+  </el-dialog>
 
 </div>

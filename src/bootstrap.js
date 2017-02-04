@@ -132,9 +132,10 @@ Object.keys(locale).forEach((lang) => {
  */
 // import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
-import { Button, Select, InputNumber } from 'element-ui';
+import { Button, Select, InputNumber, Dialog } from 'element-ui';
 
 Vue.use(Button);
+Vue.use(Dialog);
 Vue.use(Select);
 Vue.use(InputNumber);
 
@@ -150,6 +151,23 @@ import jQuery from 'jquery';
 
 window.$ = window.jQuery = jQuery;
 
+/* ============
+ * Stripe Checkout
+ * ============
+ *
+ * https://stripe.com/docs/checkout#integration-custom
+ *
+ */
+window.StripeHandler = StripeCheckout.configure({
+  key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+  image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+  locale: 'auto',
+  token: function(token) {
+    // You can access the token ID with `token.id`.
+    // Get the token ID to your server-side code for use.
+    console.log(token.id);
+  }
+});
 
 /* ============
  * Styling

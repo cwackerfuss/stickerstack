@@ -1,4 +1,12 @@
 <v-layout>
+  <div class="banner">
+    <div class="banner__image">
+      <img src="/static/images/stickerstack-example.png" />
+    </div>
+    <div class="banner__text">
+      <h1>Wear your dev <br />stack with pride.</h1>
+    </div>
+  </div>
   <div class="shop">
     <div class="shop-main">
       <div class="shop-items-container">
@@ -10,22 +18,56 @@
           <template scope="props">
             <ShopItem
               :item="props.item"
-              :toggleInCart="() => toggleItemInCart(props.index)"
+              :handleClick="() => toggleItemInCart(props.index)"
             />
           </template>
         </HiveGrid>
       </div>
     </div>
     <div class="shop-aside">
-      <div class="section-header">
-        <h1 class="section-header__title section-header__title--light">Your Stickers</h1>
+      <div class="section-header section-header--label section-header--light">
+        <p class="section-header__label">Cart</p>
+        <h1 class="section-header__title">Your Stickers</h1>
       </div>
-      <div class="cart-items">
-        <CartItem
-          v-for="(item, index) of cartItems"
-          :item="item"
-          :remove="() => clearCartItem(index)"
-        />
+      <div class="cart-promo" v-if="cartCount === 0">
+        <h3>Only $2 each when you<br />buy 6 or more.</h3>
+        <h4>Cart is empty.</h4>
+      </div>
+      <div class="cart-contents" v-if="cartCount !== 0">
+        <div class="cart-items-wrapper">
+          <div class="cart-items">
+            <CartItem
+              v-for="(item, index) of items"
+              v-if="item.inCart"
+              :item="item"
+              :handleRemove="() => toggleItemInCart(index)"
+              :handleItemQuantity="value => changeItemQuantity(value, index)"
+            />
+          </div>
+        </div>
+        <div class="shop-checkout">
+          <span class="cart-savings" v-if="cartCount < 6">
+            Pick <strong style="text-decoration: underline;">{{6 - cartCount}}</strong> more to unlock the bundle deal.
+          </span>
+          <span class="cart-savings" v-else>
+            <i class="el-icon-star-on"></i> Unlocked the bundle deal! <i class="el-icon-star-on"></i>
+          </span>
+          <p class="shop-checkout__cost">
+            <span class="shop-checkout__cost-label">Each</span>
+            ${{stickerCost | toCost}}
+            <span class="shop-checkout__multiplier">x{{cartCount}} stickers</span>
+          </p>
+          <p class="shop-checkout__cost">
+            <span class="shop-checkout__cost-label">Total</span>
+            ${{cartTotal | toCost}}
+          </p>
+          <el-button
+            @click="handleBuy"
+            type="primary"
+            size="large">
+            Buy Stickers
+          </el-button>
+        </div>
       </div>
     </div>
     <div class="shop-footer">
