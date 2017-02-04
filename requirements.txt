@@ -1,0 +1,4 @@
+flask
+gunicorn
+requests==2.12.3
+python-twitter==3.1
