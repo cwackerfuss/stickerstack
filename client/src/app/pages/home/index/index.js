@@ -25,7 +25,7 @@ export default {
       {name: 'HTML5', uid: '009', inCart: false, border: '#E23237', quantity: 1},
       {name: 'CSS3', uid: '010', inCart: false, border: '#41B883', quantity: 1},
       {name: 'CSS3', uid: '011', inCart: false, border: '#53C1DE', quantity: 1},
-      {name: 'CSS3', uid: '012', inCart: false, border: '#E23237', quantity: 1},
+      {name: 'ES6', uid: 'prod_A432WcSgLUmwyK', inCart: false, border: '#000000', quantity: 1},
     ],
     stickerCost: 275,
     cartTotal: 0,
@@ -74,7 +74,8 @@ export default {
         description: `${checkout.quantity} stickers`,
         zipCode: true,
         amount: checkout.cost,
-        shippingAddress: true
+        shippingAddress: true,
+        billingAddress: true
       });
     },
     cartItemCount() {

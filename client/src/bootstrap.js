@@ -159,13 +159,16 @@ window.$ = window.jQuery = jQuery;
  *
  */
 window.StripeHandler = StripeCheckout.configure({
-  key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+  key: 'pk_test_mJVwUhTalFALu5E6H4IvurO7',
   image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
   locale: 'auto',
   token: function(token) {
+    $.post('/order', token, function(res) {
+      console.log(res);
+    });
     // You can access the token ID with `token.id`.
     // Get the token ID to your server-side code for use.
-    console.log(token.id);
+    // console.log(token.id);
   }
 });
 
