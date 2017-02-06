@@ -130,7 +130,6 @@ Object.keys(locale).forEach((lang) => {
  *
  * http://element.eleme.io/#/en-US
  */
-// import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
 import { Button, Select, InputNumber, Dialog } from 'element-ui';
 
@@ -138,6 +137,19 @@ Vue.use(Button);
 Vue.use(Dialog);
 Vue.use(Select);
 Vue.use(InputNumber);
+
+
+/* ============
+ * Vue Local Storage
+ * ============
+ *
+ * The Vue plugin for work with LocalStorage from Vue context
+ *
+ * https://github.com/Radyushin/vue-localstorage
+ */
+import VueLocalStorage from 'utils/VueLocalStorage';
+
+Vue.use(new VueLocalStorage);
 
 /* ============
  * jQuery

@@ -17,8 +17,11 @@ export default {
   data: () => ({
     items: products.items,
     stickerCost: 275,
-    cartTotal: 0,
-    cartCount: 0,
+    checkout: {
+      cost: 0,
+      quantity: 0,
+      items: []
+    },
     shopGridConfig: {
       columns: {
         sm: 2,
@@ -37,6 +40,9 @@ export default {
   filters: {
     toCost: val => (val / 100).toFixed(2)
   },
+  beforeMount() {
+    this.checkLocalStorageForCart()
+  },
   beforeDestroy() {
     StripeHandler.close();
   },
@@ -44,16 +50,24 @@ export default {
     toggleItemInCart(index) {
       this.items[index].quantity = 1;
       this.items[index].inCart = !this.items[index].inCart;
-      this.updateCartCost();
+      this.updateCart();
+    },
+    checkLocalStorageForCart() {
+      let persisted = this.$localStorage.get('cart');
+      if (persisted) {
+        for (let i = 0; i < this.items.length; i++) {
+          let item = this.items[i];
+          if (persisted[ item.uid ]) {
+            this.items[i].inCart = true;
+            this.items[i].quantity = persisted[ item.uid ];
+          }
+        }
+        this.updateCart();
+      }
     },
     changeItemQuantity(value, index) {
       this.items[index].quantity = value;
-      this.updateCartCost();
-    },
-    updateCartCost() {
-      const cartItemCount = this.cartCount = this.cartItemCount();
-      this.stickerCost = cartItemCount > 5 ? 200 : 275;
-      this.cartTotal = cartItemCount * this.stickerCost;
+      this.updateCart();
     },
     handleBuy() {
       const checkout = this.getCheckoutDetails();
@@ -67,30 +81,28 @@ export default {
         billingAddress: true
       });
     },
-    cartItemCount() {
-      let count = 0;
-      for (let i = 0; i < this.items.length; i++) {
-        const item = this.items[i];
-        count = item.inCart ? count + item.quantity : count;
-      }
-      return count;
-    },
-    getCheckoutDetails() {
+    updateCart() {
       let checkout = {
         cost: 0,
         quantity: 0,
         items: []
       };
+      let persisted = {};
+
       for (let i = 0; i < this.items.length; i++) {
         const item = this.items[i];
         if (item.inCart) {
           checkout.items.push(item.uid);
           checkout.quantity += item.quantity;
-          checkout.cost += (item.quantity * this.stickerCost);
+          persisted[item.uid] = item.quantity;
         }
       }
+
+      this.stickerCost = checkout.quantity > 5 ? 200 : 275;
+      checkout.cost = checkout.quantity * this.stickerCost;
+      this.$localStorage.set('cart', persisted);
+      this.checkout = {...checkout};
       window.cartItems = checkout.items;
-      return checkout;
     }
   }
 };

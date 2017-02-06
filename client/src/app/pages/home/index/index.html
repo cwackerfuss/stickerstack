@@ -29,11 +29,11 @@
         <p class="section-header__label">Cart</p>
         <h1 class="section-header__title">Your Stickers</h1>
       </div>
-      <div class="cart-promo" v-if="cartCount === 0">
+      <div class="cart-promo" v-if="checkout.quantity === 0">
         <h3>Only $2 each when you<br />buy 6 or more.</h3>
         <h4>Cart is empty.</h4>
       </div>
-      <div class="cart-contents" v-if="cartCount !== 0">
+      <div class="cart-contents" v-if="checkout.quantity !== 0">
         <div class="cart-items-wrapper">
           <div class="cart-items">
             <CartItem
@@ -46,8 +46,8 @@
           </div>
         </div>
         <div class="shop-checkout">
-          <span class="cart-savings" v-if="cartCount < 6">
-            Pick <strong style="text-decoration: underline;">{{6 - cartCount}}</strong> more to unlock the bundle deal.
+          <span class="cart-savings" v-if="checkout.quantity < 6">
+            Pick <strong style="text-decoration: underline;">{{6 - checkout.quantity}}</strong> more to unlock the bundle deal.
           </span>
           <span class="cart-savings" v-else>
             <i class="el-icon-star-on"></i> Unlocked the bundle deal! <i class="el-icon-star-on"></i>
@@ -55,11 +55,11 @@
           <p class="shop-checkout__cost">
             <span class="shop-checkout__cost-label">Each</span>
             ${{stickerCost | toCost}}
-            <span class="shop-checkout__multiplier">x{{cartCount}} stickers</span>
+            <span class="shop-checkout__multiplier">x{{checkout.quantity}} stickers</span>
           </p>
           <p class="shop-checkout__cost">
             <span class="shop-checkout__cost-label">Total</span>
-            ${{cartTotal | toCost}}
+            ${{ checkout.cost | toCost}}
           </p>
           <el-button
             @click="handleBuy"
