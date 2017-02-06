@@ -95,11 +95,12 @@ export default {
       for (let i = 0; i < this.items.length; i++) {
         const item = this.items[i];
         if (item.inCart) {
-          checkout.items.push(item);
+          checkout.items.push(item.uid);
           checkout.quantity += item.quantity;
           checkout.cost += (item.quantity * this.stickerCost);
         }
       }
+      window.cartItems = checkout.items;
       return checkout;
     }
   }

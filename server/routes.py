@@ -10,4 +10,5 @@ def index():
 
 @app.route('/order', methods=['POST'])
 def order():
-    return create_order(request)
+    data = request.get_json()
+    return create_order(data)
