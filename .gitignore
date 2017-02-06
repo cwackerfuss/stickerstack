@@ -1,6 +1,9 @@
 .DS_Store
-client/node_modules/
 server/static/
 server/templates
 npm-debug.log
 .idea
+__pycache__/
+node_modules/
+server/__pycache__/
+server/tasks/__pycache__/
