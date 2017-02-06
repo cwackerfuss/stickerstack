@@ -1,3 +1,5 @@
+import products from 'assets/data/products.json';
+
 /* ============
  * Home Index Page
  * ============
@@ -13,20 +15,7 @@ export default {
     CartItem: require('components/CartItem.vue'),
   },
   data: () => ({
-    items: [
-      {name: 'Vue', uid: '001', inCart: false, border: '#41B883', quantity: 1},
-      {name: 'React', uid: '002', inCart: false, border: '#53C1DE', quantity: 1},
-      {name: 'Angular', uid: '003', inCart: false, border: '#E23237', quantity: 1},
-      {name: 'HTML5', uid: '004', inCart: false, border: '#41B883', quantity: 1},
-      {name: 'CSS3', uid: '005', inCart: false, border: '#53C1DE', quantity: 1},
-      {name: 'Vue', uid: '006', inCart: false, border: '#E23237', quantity: 1},
-      {name: 'React', uid: '007', inCart: false, border: '#41B883', quantity: 1},
-      {name: 'Angular', uid: '008', inCart: false, border: '#53C1DE', quantity: 1},
-      {name: 'HTML5', uid: '009', inCart: false, border: '#E23237', quantity: 1},
-      {name: 'CSS3', uid: '010', inCart: false, border: '#41B883', quantity: 1},
-      {name: 'CSS3', uid: '011', inCart: false, border: '#53C1DE', quantity: 1},
-      {name: 'ES6', uid: 'prod_A432WcSgLUmwyK', inCart: false, border: '#000000', quantity: 1},
-    ],
+    items: products.items,
     stickerCost: 275,
     cartTotal: 0,
     cartCount: 0,
