@@ -12,7 +12,7 @@
         <div class="nav-items">
           <ul>
             <li class="nav-item">
-              <a @click="faqDialogVisible = true">
+              <a @click="aboutDialogVisible = true">
                 About
               </a>
             </li>
@@ -31,17 +31,43 @@
     <slot></slot>
   </div>
 
-  <el-dialog title="Support" v-model="supportDialogVisible" size="tiny">
-    <span>This is a message</span>
+  <el-dialog v-model="supportDialogVisible" size="small">
+    <h3>Contact support</h3>
+    <p>For now, please just shoot us an email to reach out. We'll get back to you as soon as possible.</p>
+    <p>Email: stickerstack@gmail.com</p>
     <span slot="footer" class="dialog-footer">
       <el-button @click="supportDialogVisible = false">Cancel</el-button>
     </span>
   </el-dialog>
 
-  <el-dialog title="FAQs" v-model="faqDialogVisible" size="tiny">
-    <span>This is a message</span>
+  <el-dialog v-model="aboutDialogVisible" size="small">
+    <h3>Features</h3>
+    <p>
+      Each sticker is individually die-cut vinyl.
+      They're ideal for smooth flat surfaces like laptops or notebooks.
+      1/8" border around each design.
+    </p>
+    <h3>Price</h3>
+    <p>
+      Individual stickers are $2, but if you buy 6 or more the price of each drops to $1.50.
+    </p>
+    <h3>Dimensions</h3>
+    <p>
+      Width: 2" (~5cm)<br />
+      Height: 1.75" (~4.5cm)
+    </p>
+    <h3>Shipping</h3>
+    <p>
+      Free shipping on all purchases.<br />
+      We only ship inside the US for now.<br />
+      For our first run of orders, please expect a slight delay in shipping as we sort out our fulfillment process.
+    </p>
+    <h3>Returns</h3>
+    <p>
+      To request a return, please email our support team with your order number (sent to you via email when you purchased) and we'll get back to you as soon as possible!
+    </p>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="faqDialogVisible = false">Cancel</el-button>
+      <el-button @click="aboutDialogVisible = false">Cancel</el-button>
     </span>
   </el-dialog>
 

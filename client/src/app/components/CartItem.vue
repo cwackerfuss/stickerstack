@@ -1,6 +1,5 @@
 <template>
   <div class="cart-item">
-
     <svg class="cart-item__thumb" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 308 268" xmlns:xlink="http://www.w3.org/1999/xlink">
       <polygon
         class="hex"
@@ -14,6 +13,7 @@
     <div class="cart-item__delete" @click="handleRemove">
       <i class="el-icon-circle-close"></i>
     </div>
+    <p class="cart-item__name">{{item.name}}</p>
   </div>
 </template>
 

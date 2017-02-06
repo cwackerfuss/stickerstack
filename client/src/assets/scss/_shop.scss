@@ -133,6 +133,17 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 6px;
+  padding-bottom: 6px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid $color-alpha;
+  &__name {
+    flex: 0 0 100%;
+    text-align: center;
+    margin: 3px 0 0;
+    padding: 0 15px;
+    font-size: 0.75rem;
+    color: $color-bg-light;
+  }
   &__thumb {
     width: 40px;
     margin: 0 20px 0 0;
