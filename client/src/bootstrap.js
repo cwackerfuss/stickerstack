@@ -165,6 +165,7 @@ window.StripeHandler = StripeCheckout.configure({
   token: function(token) {
     let data = {
       token: token.id,
+      email: token.email,
       items: window.cartItems
     };
 
@@ -173,7 +174,8 @@ window.StripeHandler = StripeCheckout.configure({
       data: JSON.stringify(data),
       contentType : 'application/json',
       type: 'POST',
-    }).then(function(resp) {
+    })
+    .then(function(resp) {
       console.log(resp);
     });
     // You can access the token ID with `token.id`.
