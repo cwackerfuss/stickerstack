@@ -20,8 +20,7 @@ def create_order(data):
         },
     }
 
-    items = data['items']
-    items_list = [{'type': 'sku', 'parent': sku} for sku in items]
+    items_list = [{'type': 'sku', 'parent': item['uid'], 'quantity': item['quantity']} for item in data['items']]
 
     stripe.Order.create(
         currency='usd',
