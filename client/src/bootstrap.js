@@ -163,8 +163,18 @@ window.StripeHandler = StripeCheckout.configure({
   image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
   locale: 'auto',
   token: function(token) {
-    $.post('/order', token, function(res) {
-      console.log(res);
+    let data = {
+      token: token.id,
+      items: window.cartItems
+    };
+
+    $.ajax({
+      url: '/order',
+      data: JSON.stringify(data),
+      contentType : 'application/json',
+      type: 'POST',
+    }).then(function(resp) {
+      console.log(resp);
     });
     // You can access the token ID with `token.id`.
     // Get the token ID to your server-side code for use.
